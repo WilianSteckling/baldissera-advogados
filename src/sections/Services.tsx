@@ -139,12 +139,12 @@ export const Services: React.FC = () => {
         >
           <div className="space-y-6">
             <div>
-              <h4 className="font-sans text-xs tracking-widest uppercase text-brand-gold font-bold mb-2">Descrição</h4>
-              <p className="text-brand-gray font-light leading-relaxed">{selectedArea.description}</p>
+              <h4 className="font-sans text-xs tracking-widest uppercase text-brand-darkGreen font-bold mb-2">Descrição</h4>
+              <p className="text-brand-black font-light leading-relaxed">{selectedArea.description}</p>
             </div>
             <div>
-              <h4 className="font-sans text-xs tracking-widest uppercase text-brand-gold font-bold mb-2">Atuação</h4>
-              <p className="text-brand-gray font-light leading-relaxed">{selectedArea.atuacao}</p>
+              <h4 className="font-sans text-xs tracking-widest uppercase text-brand-darkGreen font-bold mb-2">Atuação</h4>
+              <p className="text-brand-black font-light leading-relaxed">{selectedArea.atuacao}</p>
             </div>
           </div>
         </Modal>
