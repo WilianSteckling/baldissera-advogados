@@ -12,7 +12,7 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-[#f8fafc] antialiased">
       <Navbar />
-      <div className="pt-20 lg:pt-0">
+      <div>
         <Hero />
         <About />
         <Gallery />

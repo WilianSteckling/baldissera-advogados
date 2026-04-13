@@ -32,7 +32,8 @@ export const Navbar: React.FC = () => {
           <img
             src={(logoHeader as any).src}
             alt="Logo Silvério Baldissera"
-            className={`h-12 w-auto transition-all duration-300 ${isScrolled ? 'brightness-100 invert-0' : 'brightness-0 invert'}`}
+            className="h-12 w-auto transition-all duration-300"
+            style={{ filter: isScrolled ? 'none' : 'brightness(0) invert(1)' }}
           />
         </div>
 
@@ -57,7 +58,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className={`md:hidden transition-all duration-300 ${isScrolled ? 'text-brand-black' : 'text-white'}`}
+          className={`md:hidden transition-all duration-300 ${isScrolled ? 'text-gray-900' : 'text-white'}`}
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -66,7 +67,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Menu Open State */}
         {isOpen && (
-            <div className={`md:hidden font-sans tracking-wider text-xs uppercase px-6 py-6 flex flex-col gap-6 ${isScrolled ? 'bg-white/95 backdrop-blur-md text-brand-black' : 'bg-black/90 backdrop-blur-sm text-white'}`}>
+            <div className={`md:hidden font-sans tracking-wider text-xs uppercase px-6 py-6 flex flex-col gap-6 ${isScrolled ? 'bg-white/95 backdrop-blur-md text-gray-900' : 'bg-black/90 backdrop-blur-sm text-white'}`}>
                 {navLinks.map((link) => (
                     <a
                         key={link.name}
@@ -80,7 +81,7 @@ export const Navbar: React.FC = () => {
                  <a
                     href="#contato"
                     onClick={() => setIsOpen(false)}
-                    className={`font-sans text-xs tracking-widest uppercase px-5 py-2.5 rounded transition-all duration-300 text-center ${isScrolled ? 'bg-brand-darkGreen text-white hover:bg-brand-black' : 'border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-brand-gold'}`}
+                    className={`font-sans text-xs tracking-widest uppercase px-5 py-2.5 rounded transition-all duration-300 text-center ${isScrolled ? 'bg-[#033b40] text-white hover:bg-[#1a1a1a]' : 'border border-white/30 bg-transparent text-white hover:bg-white/10 hover:text-[#caaa8a]'}`}
                 >
                     Agendar Consulta
                 </a>

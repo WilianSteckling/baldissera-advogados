@@ -1,15 +1,22 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import heroPc from '../assets/images/hero-pc.png';
+import heroCelular from '../assets/images/hero-celular.png';
 
 export const Hero: React.FC = () => {
   return (
     <section id="inicio" className="relative h-screen w-full overflow-hidden">
-      {/* Imagem de fundo */}
+      {/* Imagem de fundo - Mobile */}
+      <img
+        src={(heroCelular as any).src}
+        alt="Escritório"
+        className="absolute inset-0 w-full h-full object-cover md:hidden"
+      />
+      {/* Imagem de fundo - Desktop */}
       <img
         src={(heroPc as any).src}
         alt="Escritório"
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover hidden md:block"
       />
 
       {/* Gradient vignette de baixo para cima */}
