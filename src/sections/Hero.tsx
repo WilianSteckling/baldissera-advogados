@@ -5,12 +5,12 @@ import heroCelular from '../assets/images/hero-celular.png';
 
 export const Hero: React.FC = () => {
   return (
-    <section id="inicio" className="relative h-screen w-full overflow-hidden">
+    <section id="inicio" className="relative h-screen w-full overflow-hidden bg-black">
       {/* Imagem de fundo - Mobile */}
       <img
         src={(heroCelular as any).src}
         alt="Escritório"
-        className="absolute inset-0 w-full h-full object-cover md:hidden"
+        className="absolute inset-0 w-full h-full object-contain object-top md:hidden"
       />
       {/* Imagem de fundo - Desktop */}
       <img
