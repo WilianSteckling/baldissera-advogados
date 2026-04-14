@@ -20,7 +20,7 @@ export const Contact: React.FC = () => {
             <Phone size={20} />
           </div>
           <p className="font-sans text-xs tracking-widest uppercase text-brand-gold font-bold">Telefone / WhatsApp</p>
-          <p className="text-brand-black font-light text-sm">(49) 3522-1053</p>
+          <p className="text-brand-black font-light text-sm">(49) 3521-3777</p>
         </div>
 
         <div className="flex flex-col items-center text-center space-y-3 p-8 border border-gray-100 rounded-xl">
@@ -42,7 +42,7 @@ export const Contact: React.FC = () => {
 
       <div className="text-center">
         <a
-          href="https://wa.me/554935221053"
+          href="https://wa.me/554935213777"
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-3 bg-brand-darkGreen text-brand-white font-sans text-sm tracking-widest uppercase px-10 py-4 rounded-full hover:bg-brand-black transition-all duration-300 group"
