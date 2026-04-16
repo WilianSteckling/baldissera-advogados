@@ -28,7 +28,7 @@ export const Contact: React.FC = () => {
             <Mail size={20} />
           </div>
           <p className="font-sans text-xs tracking-widest uppercase text-brand-gold font-bold">E-mail</p>
-          <p className="text-brand-black font-light text-sm">contato@silverio.adv.br</p>
+          <p className="text-brand-black font-light text-sm">contato@baldissera.adv.br</p>
         </div>
 
         <div className="flex flex-col items-center text-center space-y-3 p-8 border border-gray-100 rounded-xl">
@@ -36,7 +36,7 @@ export const Contact: React.FC = () => {
             <MapPin size={20} />
           </div>
           <p className="font-sans text-xs tracking-widest uppercase text-brand-gold font-bold">Localização</p>
-          <p className="text-brand-black font-light text-sm">Joaçaba, SC</p>
+          <p className="text-brand-black font-light text-sm">Edifício Multi, Rua Norino Rótulo, número 60, Sala 1003, Centro - Joaçaba/SC</p>
         </div>
       </div>
 
