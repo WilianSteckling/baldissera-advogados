@@ -2,153 +2,160 @@
 
 import React, { useState } from 'react';
 import { Section } from '../components/layout/Section';
-import { Modal } from '../components/ui/Modal';
+import { Scale, Shield, ChevronDown, Quote } from 'lucide-react';
+
+interface Topic {
+  title: string;
+  text: string;
+}
 
 interface Area {
   title: string;
+  icon: React.ReactNode;
   description: string;
-  atuacao: string;
+  topics: Topic[];
+  quote: string;
 }
 
 const areas: Area[] = [
   {
-    title: 'Direito Civil',
-    description: 'É o principal ramo do direito privado, que trata do conjunto de normas reguladoras dos direitos e obrigações de ordem privada concernentes às pessoas, aos seus bens e às suas relações.',
-    atuacao: 'Indenizações por danos morais e materiais, responsabilidade civil, direito de vizinhança, posse e propriedade.',
+    title: 'Inventários e Sucessões',
+    icon: <Scale className="w-6 h-6" />,
+    description:
+      'Esta área é dedicada à organização e transferência do patrimônio familiar após o falecimento de um ente querido, garantindo que a vontade da lei e do falecido sejam respeitadas com o mínimo de desgaste para os herdeiros.',
+    topics: [
+      {
+        title: 'Inventários Judiciais e Extrajudiciais',
+        text: 'Atuamos na regularização de bens de forma ágil. Quando há consenso entre herdeiros e ausência de menores, priorizamos a via extrajudicial (em cartório), que é consideravelmente mais rápida. Em casos de conflitos ou testamentos, conduzimos o processo judicial com rigor técnico.',
+      },
+      {
+        title: 'Condução de Partilhas com Segurança Jurídica',
+        text: 'Planejamos e executamos a divisão de bens de forma estratégica, prevenindo litígios futuros, otimizando a carga tributária (ITCMD) e garantindo que todos os trâmites legais sejam seguidos à risca para evitar nulidades.',
+      },
+    ],
+    quote:
+      'Transformamos um momento sensível em um processo célere e seguro, protegendo o legado da sua família.',
   },
   {
     title: 'Direito Securitário',
-    description: 'Regula as relações entre seguradoras, corretores e consumidores, tratando de questões relacionadas a contratos de seguro.',
-    atuacao: 'Negativa de cobertura de seguro (vida, automóvel, residencial ou saúde), atraso no pagamento de indenização, cláusulas abusivas e cancelamento indevido de contrato.',
-  },
-  {
-    title: 'Direito de Família e Sucessões',
-    description: 'Trata das relações familiares e da partilha de bens após a morte, regulando aspectos como casamentos, divórcios, guarda de filhos e heranças.',
-    atuacao: 'Divórcio, guarda de filhos, pensão alimentícia, inventário e testamento.',
-  },
-  {
-    title: 'Direito Médico e da Saúde',
-    description: 'Defende os direitos de pacientes e profissionais da saúde, abrangendo responsabilidades médicas, acesso a tratamentos e questões de planos de saúde.',
-    atuacao: 'Erro médico, negativa de plano de saúde, cirurgias urgentes não autorizadas e responsabilidade hospitalar.',
-  },
-  {
-    title: 'Direito Tributário',
-    description: 'Regula a arrecadação de tributos e a relação entre Fisco e contribuinte, buscando a justa aplicação das leis fiscais.',
-    atuacao: 'Contestação de impostos indevidos, recuperação de créditos tributários e planejamento tributário.',
-  },
-  {
-    title: 'Direito do Trabalho',
-    description: 'Disciplina as relações entre empregados e empregadores, garantindo direitos e deveres de ambas as partes.',
-    atuacao: 'Verbas rescisórias, horas extras, vínculo empregatício, assédio moral e defesa de ambas as partes.',
-  },
-  {
-    title: 'Direito Contratual',
-    description: 'Especializado na elaboração, revisão e interpretação de contratos, assegurando a validade e o cumprimento das cláusulas.',
-    atuacao: 'Contratos de prestação de serviços, compra e venda, distratos e análise de cláusulas abusivas.',
-  },
-  {
-    title: 'Direito Societário',
-    description: 'Regula a constituição, organização e funcionamento das sociedades empresariais, incluindo fusões, aquisições e dissoluções.',
-    atuacao: 'Abertura e encerramento de empresas, acordos entre sócios, resolução de conflitos, exclusão de sócio e reorganizações (fusão, cisão).',
-  },
-  {
-    title: 'Direito Empresarial',
-    description: 'Abrange as normas que regulam a atividade das empresas, desde sua criação até a proteção de seus interesses comerciais.',
-    atuacao: 'Contratos comerciais, recuperação judicial, falência, responsabilidade de sócios e registro de marcas.',
-  },
-  {
-    title: 'Direito Previdenciário',
-    description: 'Voltado à proteção social do trabalhador e de seus dependentes, assegurando o acesso a benefícios da Previdência Social.',
-    atuacao: 'Aposentadoria (idade ou invalidez), pensão por morte, auxílio-doença e BPC/LOAS.',
-  },
-  {
-    title: 'Direito Imobiliário',
-    description: 'Envolve as relações jurídicas relativas a bens imóveis, como compra, venda, aluguel, regularização e disputas de propriedade.',
-    atuacao: 'Compra e venda, usucapião, despejo, locação e regularização de imóveis.',
-  },
-  {
-    title: 'Direito Digital e Proteção de Dados',
-    description: 'Lida com as questões legais do mundo digital e a privacidade de dados pessoais, como a LGPD e crimes cibernéticos.',
-    atuacao: 'LGPD, uso indevido de dados, responsabilidade por publicações na internet e crimes virtuais.',
-  },
-  {
-    title: 'Direito Ambiental',
-    description: 'Protege o meio ambiente e regula o uso sustentável dos recursos naturais, combatendo danos e promovendo a sustentabilidade.',
-    atuacao: 'Licenciamento ambiental, ações por danos ambientais, loteamentos irregulares e áreas de preservação.',
-  },
-  {
-    title: 'Direito Administrativo',
-    description: 'Trata da atuação do Estado e sua relação com os cidadãos, envolvendo licitações, concursos públicos e responsabilidade estatal.',
-    atuacao: 'Concursos públicos, licitações, processos administrativos disciplinares e danos causados pelo Estado.',
-  },
-  {
-    title: 'Direito Penal',
-    description: 'Regula os crimes e as penas impostas aos infratores, garantindo a defesa e o devido processo legal.',
-    atuacao: 'Defesa em processos criminais, crimes contra o patrimônio ou honra e medidas cautelares.',
-  },
-  {
-    title: 'Direito Agrário',
-    description: 'Regula as relações jurídicas relativas à atividade rural e à propriedade da terra, incluindo questões de uso e posse da terra.',
-    atuacao: 'Arrendamento rural, usucapião rural, regularização fundiária e questões com o INCRA.',
-  },
-  {
-    title: 'Direito Bancário',
-    description: 'Trata da relação entre clientes e instituições financeiras, buscando a revisão de contratos e a defesa contra abusos.',
-    atuacao: 'Revisão de contratos de financiamento, cobranças indevidas, negativação irregular e juros abusivos.',
-  },
-  {
-    title: 'Direito do Consumidor',
-    description: 'Defende os direitos dos consumidores em suas relações com fornecedores, protegendo-os contra práticas abusivas e produtos defeituosos.',
-    atuacao: 'Cobrança indevida, propaganda enganosa, vício em produto ou serviço e negativação indevida.',
+    icon: <Shield className="w-6 h-6" />,
+    description:
+      'O foco aqui é garantir que o contrato de seguro seja cumprido integralmente, protegendo o segurado ou beneficiário contra abusos e negativas indevidas das seguradoras.',
+    topics: [
+      {
+        title: 'Indenizações e Coberturas',
+        text: 'Assessoria completa para o recebimento de indenizações em diversas modalidades (Vida, Saúde, Automóveis, Imobiliário, Responsabilidade Civil, entre outros). Analisamos minuciosamente as apólices para garantir que o cliente receba exatamente o que contratou.',
+      },
+      {
+        title: 'Litígios Securitários',
+        text: 'Atuação incisiva em casos de negativa injustificada de pagamento, atrasos excessivos ou interpretações abusivas de cláusulas contratuais. Defendemos os interesses do segurado em ações judiciais para reverter decisões das seguradoras e garantir a reparação de danos.',
+      },
+    ],
+    quote:
+      'Sua apólice deve ser sua segurança, não uma preocupação. Atuamos para que seus direitos frente às seguradoras sejam respeitados.',
   },
 ];
 
-export const Services: React.FC = () => {
-  const [selectedArea, setSelectedArea] = useState<Area | null>(null);
+const ExpandableCard = ({ area }: { area: Area }) => {
+  const [isOpen, setIsOpen] = useState(false);
 
+  return (
+    <div
+      className={`
+        group rounded-2xl border bg-white overflow-hidden
+        transition-all duration-500 ease-in-out
+        ${isOpen ? 'border-brand-gold/50 shadow-lg shadow-brand-gold/5' : 'border-gray-100 hover:border-brand-gold/30 hover:shadow-md'}
+      `}
+    >
+      {/* Card Header — always visible */}
+      <button
+        onClick={() => setIsOpen((prev) => !prev)}
+        className="w-full text-left p-8 flex items-start gap-5 cursor-pointer"
+      >
+        <div
+          className={`
+            shrink-0 w-12 h-12 rounded-xl flex items-center justify-center
+            transition-colors duration-300
+            ${isOpen ? 'bg-brand-darkGreen text-white' : 'bg-brand-gold/10 text-brand-gold'}
+          `}
+        >
+          {area.icon}
+        </div>
+
+        <div className="flex-1 min-w-0">
+          <h3 className="font-serif text-xl lg:text-2xl text-brand-black leading-tight">
+            {area.title}
+          </h3>
+          <p className="mt-2 text-sm text-brand-gray font-light leading-relaxed">
+            {area.description}
+          </p>
+        </div>
+
+        <ChevronDown
+          className={`
+            w-5 h-5 shrink-0 text-brand-gold mt-1
+            transition-transform duration-500
+            ${isOpen ? 'rotate-180' : 'rotate-0'}
+          `}
+        />
+      </button>
+
+      {/* Expandable Content */}
+      <div
+        className={`
+          grid transition-all duration-500 ease-in-out
+          ${isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}
+        `}
+      >
+        <div className="overflow-hidden">
+          <div className="px-8 pb-8 pt-0 space-y-6">
+            {/* Divider */}
+            <div className="w-full h-px bg-linear-to-r from-transparent via-brand-gold/30 to-transparent" />
+
+            {/* Topics */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {area.topics.map((topic) => (
+                <div key={topic.title} className="space-y-2">
+                  <h4 className="font-sans text-xs tracking-widest uppercase text-brand-darkGreen font-bold">
+                    {topic.title}
+                  </h4>
+                  <p className="text-sm text-brand-gray font-light leading-relaxed">
+                    {topic.text}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Quote */}
+            <div className="relative border-l-2 border-brand-gold bg-brand-gold/5 rounded-r-xl py-5 px-6">
+              <Quote className="absolute -top-2 -left-3 w-6 h-6 text-brand-gold bg-white rounded-full p-0.5" />
+              <p className="text-sm italic text-brand-black/80 leading-relaxed">
+                {area.quote}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export const Services: React.FC = () => {
   return (
     <Section id="areas" className="bg-[#fcfcfc]">
       <div className="text-center mb-16">
         <h2 className="font-serif text-4xl text-brand-black mb-4">Áreas de Atuação</h2>
-        <div className="w-20 h-1 bg-brand-gold mx-auto"></div>
+        <div className="w-20 h-1 bg-brand-gold mx-auto mb-6"></div>
+        <p className="font-sans text-brand-gray font-light max-w-lg mx-auto">
+          Atuação especializada com foco em resultados e segurança jurídica.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="max-w-3xl mx-auto space-y-6">
         {areas.map((area) => (
-          <div
-            key={area.title}
-            onClick={() => setSelectedArea(area)}
-            className="group p-6 border border-gray-100 rounded-xl bg-white hover:border-brand-gold/40 hover:shadow-md transition-all duration-300 cursor-pointer"
-          >
-            <h3 className="font-serif text-lg text-brand-black group-hover:text-brand-darkGreen transition-colors">
-              {area.title}
-            </h3>
-            <p className="text-xs text-brand-gray font-light mt-2 line-clamp-2">{area.description}</p>
-            <span className="inline-block mt-4 text-[10px] tracking-widest uppercase text-brand-gold font-semibold group-hover:translate-x-1 transition-transform">
-              Saiba mais →
-            </span>
-          </div>
+          <ExpandableCard key={area.title} area={area} />
         ))}
       </div>
-
-      {selectedArea && (
-        <Modal
-          isOpen={!!selectedArea}
-          onClose={() => setSelectedArea(null)}
-          title={selectedArea.title}
-        >
-          <div className="space-y-6">
-            <div>
-              <h4 className="font-sans text-xs tracking-widest uppercase text-brand-darkGreen font-bold mb-2">Descrição</h4>
-              <p className="text-brand-black font-light leading-relaxed">{selectedArea.description}</p>
-            </div>
-            <div>
-              <h4 className="font-sans text-xs tracking-widest uppercase text-brand-darkGreen font-bold mb-2">Atuação</h4>
-              <p className="text-brand-black font-light leading-relaxed">{selectedArea.atuacao}</p>
-            </div>
-          </div>
-        </Modal>
-      )}
     </Section>
   );
 };

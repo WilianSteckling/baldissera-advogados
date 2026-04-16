@@ -45,7 +45,7 @@ export const Contact: React.FC = () => {
           href="https://wa.me/554935213777"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 bg-brand-darkGreen text-brand-white font-sans text-sm tracking-widest uppercase px-10 py-4 rounded-full hover:bg-brand-black transition-all duration-300 group"
+          className="inline-flex items-center gap-3 bg-[#00ff6a] text-brand-white font-sans text-sm tracking-widest uppercase px-10 py-4 rounded-full hover:bg-brand-black transition-all duration-300 group"
         >
           <MessageCircle size={18} className="group-hover:scale-110 transition-transform" />
           Agendar Consulta Via WhatsApp
